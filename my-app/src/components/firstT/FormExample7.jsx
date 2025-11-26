@@ -1,6 +1,7 @@
 // Ilya Zeldner
 // 7 example of react
-// This component demonstrates how to create a reusable input component with a label.
+// This component demonstrates how to create a reusable input 
+// component with a label.
 // It uses the "LabeledInput" component to create two labeled input fields: 
 // one for a name and one for an email address.
 

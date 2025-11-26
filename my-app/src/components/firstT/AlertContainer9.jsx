@@ -1,7 +1,9 @@
 // Ilya Zeldner
 // 9 example of react
-// This component demonstrates how to create a reusable alert component that can display different types of messages.
-// It uses the "Alert" component to create three different alerts: success, warning, and error.
+// This component demonstrates how to create a reusable alert component 
+// that can display different types of messages.
+// It uses the "Alert" component to create three different alerts: 
+// success, warning, and error.
 import Alert from "./Alert9";
 function AlertContainer() {
     return (

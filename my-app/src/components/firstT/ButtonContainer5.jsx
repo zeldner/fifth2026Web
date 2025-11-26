@@ -2,8 +2,9 @@
 // 5 example of react
 // This component renders a button with a specific text and background color.
 // It demonstrates how to create a reusable button component in React.
-// It is a simple example of how to use props to customize a component's appearance and behavior.
-import ActionButton from "./ActionButton5";
+// It is a simple example of how to use props to customize a component's 
+// appearance and behavior.
+import ActionButton from "./ActionButton5"; // Import the ActionButton component
 function ButtonContainer() {
     const handleClick = (buttonText) => {
       alert(`Button "${buttonText}" clicked!`);

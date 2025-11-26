@@ -1,6 +1,7 @@
 // Ilya Zeldner
 // 3 example of react
-// This is a simple React component that displays a greeting message with a name passed as a prop.
+// This is a simple React component that displays a greeting message 
+// with a name passed as a prop.
 // It demonstrates how to pass props and render them in a class component.
 // It is a simple example of how to use class components in React.
 import React from 'react';

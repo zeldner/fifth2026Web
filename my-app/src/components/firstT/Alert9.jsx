@@ -1,6 +1,7 @@
 // Ilya Zeldner
 // 9 example of react
-// This component demonstrates how to create a simple alert component that displays messages with different styles based on the type of alert.
+// This component demonstrates how to create a simple alert 
+// component that displays messages with different styles based on the type of alert.
 export default function Alert(props) {
     let alertStyle = {
       padding: '15px',

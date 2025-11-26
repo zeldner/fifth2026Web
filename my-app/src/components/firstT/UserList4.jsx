@@ -1,8 +1,9 @@
 // Ilya Zeldner
 // 4 example of react
-// class component that renders a user profile card using props to display user information.
-// It demonstrates how to use props to pass data to child components and create 
-// reusable components in React.
+// class component that renders a user profile card using props 
+// to display user information.
+// It demonstrates how to use props to pass data to child components 
+// and create reusable components in React.
 // It is a simple example of how to create a list of components in React.
 
 import ProfileCard from './ProfileCard4'; // Import the ProfileCard component
@@ -15,7 +16,8 @@ import React, { Component } from 'react';
 //     { name: 'Alice Johnson', age: 28, occupation: 'Product Manager' },
 // ];
 // <UserList users={users} />
-// This component renders a list of user profiles using the ProfileCard component.
+// This component renders a list of user profiles using the ProfileCard 
+// component.
 
 class UserList extends Component {
     render() {

@@ -46,8 +46,9 @@ in vscode :
 #		JavaScript React (.jsx)
 #		TypeScript (.ts)
 #		TypeScript React (.tsx)
-#	for example : rfce
-	
+#	    for example : rfce
+    Simple React Snippets 
+        for example : ccc
 	React component tree
 	Omlet for VS Code
 
