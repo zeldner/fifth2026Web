@@ -5,25 +5,14 @@
 import React from 'react';
 
 function UserStatus({ username, isOnline }) {
-  const containerStyle = {
-    padding: '10px',
-    border: '1px solid #ccc',
-    display: 'inline-block'
-  };
-
   return (
-    <div style={containerStyle}>
-      <strong>{username}</strong> is currently: 
-      
-      {/* Ternary Operator: (Condition) ? (If True) : (If False) */}
-      <span style={{ color: isOnline ? 'green' : 'red', fontWeight: 'bold' }}>
+    <div className="p-3 border border-gray-300 rounded inline-block bg-gray-50 m-2">
+      <strong className="text-gray-900">{username}</strong> is currently: 
+      <span className={`font-bold ml-1 ${isOnline ? 'text-green-600' : 'text-red-600'}`}>
         { isOnline ? ' ONLINE' : ' OFFLINE' }
       </span>
-      
-      {/* Logical AND: Only shows if isOnline is true */}
-      { isOnline && <span> (Available to chat)</span> }
+      { isOnline && <span className="text-sm text-gray-500 ml-2">(Available to chat)</span> }
     </div>
   );
 }
-
 export default UserStatus;

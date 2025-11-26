@@ -16,6 +16,7 @@ import ArticleLayout from './components/firstT/ArticleLayout13';
 import ProductCard from './components/firstT/ProductCard14';
 import './App.css';
 
+
 function   App() {
     
     // Sample data for the user list
@@ -55,7 +56,7 @@ function   App() {
             <h2>Content Area</h2>
             <p>This is the main content area.</p>
             <ItemListContainer/> {/* This component can be used to display a list of items or products */}
-            <p>Form : .</p>
+            <p>Form : </p>
             <FormExample /> {/* This component can be used to display a form for user input */}         
         </div>
         <div className="footer">
