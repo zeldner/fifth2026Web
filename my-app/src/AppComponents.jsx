@@ -10,6 +10,10 @@ import FormExample from './components/firstT/FormExample7';
 import VisibilityController from './components/firstT/VisibilityController8';
 import AlertContainer from './components/firstT/AlertContainer9';
 import DynamicMenu from './components/firstT/DynamicMenu10';
+import CardWrapper from './components/firstT/CardWrapper11';
+import UserStatus from './components/firstT/UserStatus12';
+import ArticleLayout from './components/firstT/ArticleLayout13';
+import ProductCard from './components/firstT/ProductCard14';
 import './App.css';
 
 function   App() {
@@ -61,7 +65,28 @@ function   App() {
             <AlertContainer /> {/* This component can be used to display alerts or notifications */}    
             <p>Dynamic Menu : .</p> 
             <DynamicMenu items={menuItems} /> {/* This component can be used to display a dynamic menu based on the provided items */}
+        <CardWrapper title="My Info"><p>Hello</p></CardWrapper>
+        <UserStatus username="Alice" isOnline={true} />
+        <UserStatus username="Bob" isOnline={false} />
+        <ArticleLayout 
+          title="Understanding React Fragments" 
+          content="React Fragments allow you to group a list of children 
+                  without adding extra nodes to the DOM. 
+                  This is useful for returning multiple elements 
+                  from a component without wrapping them in an 
+                  additional div." 
+        />
+        <div className="product-card-section">
+          <h2>Product Card Example</h2>
+          <ProductCard 
+            product={{ name: 'Laptop', price: 999.99, category: 'Electronics' }} 
+          />
+          <ProductCard 
+            product={{ name: 'Book', price: 19.99 }} // No category provided, should use default
+          />
+          <ProductCard /> {/* No product prop provided, should show fallback message */}
         </div>
+      </div>
     </div>
   );
 }

@@ -8,4 +8,12 @@ export default defineConfig({
     react(),
     tailwindcss(), // <-- Add it here
   ],
+
+  
+  server: { // Configure the development server
+    port: 3001,
+    open: true,
+  },
+  envPrefix: 'VITE_', // Prefix for environment variables
+
 })
