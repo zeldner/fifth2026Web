@@ -2,6 +2,7 @@
 // 9 example of react
 // This component demonstrates how to create a simple alert
 // component that displays messages with different styles based on the type of alert.
+// mhvnhvhv
 
 export default function Alert(props) {
     
