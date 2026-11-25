@@ -1,14 +1,15 @@
-// Ilya Zeldner
-// 6 example of react
-// This component renders a list of items passed as props.
-// It demonstrates how to use props to customize a component's 
-// content and structure.
-import ItemList from "./ItemList6"; // Import the ItemList component
+// Ilya Zeldner - Web Technologies Practice 5 (Example 6B: Container Passing Data Array to List)
+//
+// HOW IT WORKS:
+//   - Prepares a data array (`fruits`) and passes it down to `<ItemList />` via props.
+//
+// PROS:
+//   - Keeps data sourcing separate from list rendering markup.
+
+import ItemList from './ItemList6';
 
 export default function ItemListContainer() {
-    const items = ["Apple", "Banana", "Cherry", "Date"];
-  
-    return (
-      <ItemList items={items}/>
-    );
-  }
+  const fruits = ['Apple', 'Banana', 'Cherry', 'Date'];
+
+  return <ItemList title="Fresh Market Items" items={fruits} />;
+}

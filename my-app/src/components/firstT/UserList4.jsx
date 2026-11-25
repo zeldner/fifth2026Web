@@ -1,36 +1,35 @@
-// Ilya Zeldner
-// 4 example of react
-// class component that renders a user profile card using props 
-// to display user information.
-// It demonstrates how to use props to pass data to child components 
-// and create reusable components in React.
-// It is a simple example of how to create a list of components in React.
+// Ilya Zeldner - Web Technologies Practice 5 (Example 4B: Rendering Component Lists with Keys)
+//
+// HOW IT WORKS:
+//   - Upgraded from a legacy Class Component to a clean modern Functional Component.
+//   - Uses `users.map()` to transform an array of user objects into `<ProfileCard />` elements.
+//   - Passes a unique, stable `key={user.id}` to each item so React tracks DOM updates accurately.
+//
+// PROS:
+//   - Clean separation between list iteration (`UserList`) and item presentation (`ProfileCard`).
+//   - Graceful empty-state fallback when `users` is empty.
+//
+// CONS & COMMON PITFALLS:
+//   - PITFALL: Avoid `key={index}` when items can be added, deleted, or reordered — React may reuse
+//     the wrong DOM node. Always prefer a unique ID (`user.id`).
 
-import ProfileCard from './ProfileCard4'; // Import the ProfileCard component
-import React, { Component } from 'react';
+import ProfileCard from './ProfileCard4';
 
-// Example usage of the UserList component
-// const users = [
-//     { name: 'John Doe', age: 30, occupation: 'Software Engineer' },
-//     { name: 'Jane Smith', age: 25, occupation: 'Designer' },
-//     { name: 'Alice Johnson', age: 28, occupation: 'Product Manager' },
-// ];
-// <UserList users={users} />
-// This component renders a list of user profiles using the ProfileCard 
-// component.
+export default function UserList({ users = [] }) {
+  if (users.length === 0) {
+    return <p className="text-sm text-slate-500 italic">No users available to display.</p>;
+  }
 
-class UserList extends Component {
-    render() {
-        const { users } = this.props; // Receive users from parent component
-
-        return (
-            <div>
-                {users.map((user, index) => (
-                    <ProfileCard key={index} name={user.name} age={user.age} occupation={user.occupation} />
-                ))}
-            </div>
-        );
-    }
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {users.map((user) => (
+        <ProfileCard
+          key={user.id ?? user.name}
+          name={user.name}
+          age={user.age}
+          occupation={user.occupation}
+        />
+      ))}
+    </div>
+  );
 }
-
-export default UserList;

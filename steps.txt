@@ -1,80 +1,109 @@
-npm create vite@latest
-    Project name: my-app
-    Select a variant: JavaScript + SWC
-        The Engine: SWC (Speedy Web Compiler)
-        This is a newer compiler written in Rust (a very high-performance systems language).
-        Pros: It is significantly faster (often 20x-70x faster) than Babel.
-        Cons: It is newer, so it has fewer niche plugins.
-        When a we change a line of code and hits Save, SWC updates the browser almost instantly. 
-        Babel can sometimes have a split-second delay.
+# Ilya Zeldner
+# ==============================================================================
+# Practice 5 Setup & Curriculum Guide: React 19 + Vite (SWC) + Tailwind CSS v4
+# ==============================================================================
 
-        The "React Compiler" option : (formerly known as "React Forget") is a tool designed to automatically optimize code. 
-        It automatically memorizes variables and functions so developers don't have to worry about performance.
-        For a Senior Developer: This is heaven. It saves time.
+1. Create the Vite + React Project
+------------------------------------------------------------------------------
+Run in terminal:
+    npm create vite@latest
 
-        It abstracts away complexity. If we use this, we will never understand why React components 
-        re-render. We won't learn the lifecycle of a component because the compiler 
-        is optimizing our "mistakes" in the background. We want to make those mistakes so 
-        we can learn!
-    Rolldown is currently experimental. It is a brand-new tool being built to eventually 
-    replace the older tools inside Vite. While it is very fast, it is still 
-    in "Beta" testing.
-        If we choose YES: we might encounter random bugs, crashes, 
-        or weird errors,  because the software isn't finished yet.
-        We choose NO: we get the stable, battle-tested version of Vite.
-    
-    When prompted "Install with npm and start now?", this refers to 
-    starting the development server immediately after installation.
-    Select NO. This will allow us to finish setting up our project 
-    and install additional dependencies (like Tailwind) before starting 
-    the development server.
-    Why? If we select YES, Vite will immediately start the web server. 
-    This sounds good, but it creates a problem :
-    It will lock our terminal because the server is running.
-    We won't be able to install Tailwind because the server is busy.
-    We would have to press Ctrl + C to stop the server.
+Interactive prompts:
+    - Project name: my-app
+    - Select a framework: React
+    - Select a variant: JavaScript + SWC
+        * Why SWC (Speedy Web Compiler)?
+          Written in Rust, SWC compiles JSX 20x-70x faster than Babel, giving
+          near-instant Hot Module Replacement (HMR) when you save a file.
+    - Enable "React Compiler"? -> Select NO
+        * Why NO for learning?
+          React Compiler auto-memoizes components and values behind the scenes.
+          Turning it OFF lets students see natural component re-renders and
+          understand React's rendering lifecycle directly.
+    - Use experimental Rolldown bundler (if prompted)? -> Select NO
+        * Keeps the stable, battle-tested Vite build pipeline.
+    - Install with npm and start now? -> Select NO
+        * Selecting NO keeps the terminal free so we can install Tailwind CSS
+          before launching the dev server.
 
-cd my-app 
-npm install
-   
+2. Install Dependencies & Tailwind CSS v4
+------------------------------------------------------------------------------
+    cd my-app
+    npm install
+    npm install tailwindcss @tailwindcss/vite
 
-in : https://chromewebstore.google.com/ install : React Developer Tools
-in vscode : 
-	ES7 React/Redux/GraphQL/React-Native snippets
-#		Supported languages (file extensions)
-#		JavaScript (.js)
-#		JavaScript React (.jsx)
-#		TypeScript (.ts)
-#		TypeScript React (.tsx)
-#	    for example : rfce
-    Simple React Snippets 
-        for example : ccc
-	React component tree
-	Omlet for VS Code
+Configure vite.config.js:
+    import { defineConfig } from 'vite'
+    import react from '@vitejs/plugin-react'
+    import tailwindcss from '@tailwindcss/vite'
 
-# tailwindcss: 
-npm install tailwindcss @tailwindcss/vite
-in vite.config.js : 
-	import tailwindcss from '@tailwindcss/vite'
-	plugins: [react(),   tailwindcss()], 
+    export default defineConfig({
+      plugins: [react(), tailwindcss()],
+      server: {
+        port: 3001,
+        open: true,
+      },
+    })
 
-    server: { // Configure the development server
-    port: 3001,
-    open: true,
-  },
+Configure src/index.css:
+    @import "tailwindcss";
 
-in .css : 
-	@import "tailwindcss";
-in jsx or tsx : import css file
+    @layer base {
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background-color: #f1f5f9;
+        color: #0f172a;
+      }
+    }
 
-Summary of all components examples :
-    Basic Display: Hello World / Greeting (#1, #2, #3).
-    
-    Styling Logic: Alert (#9) – demonstrates conditional styling and dynamic class application.
-    Lists: ItemList (#6, #10).
-    Styling Logic: Alert (#9).
-    Events (Callback props): Buttons (#5) – handles user click events via callback functions.
-    Wrappers: CardWrapper (#11) – used to wrap content or components with consistent styling and layout.
-    Logic: UserStatus (#12) – handles user authentication and online status logic.
-    Structure: ArticleLayout (#13) – demonstrates layout structure such as header, body, and footer.
-    Data Objects: ProductCard (#14) – typically displays product information such as name, price, image, and description using a product data object passed as props.
+3. Wire AppComponents.jsx in src/main.jsx
+------------------------------------------------------------------------------
+To display the Practice 5 Dashboard instead of Vite's starter page, update
+src/main.jsx to import AppComponents:
+
+    import { StrictMode } from 'react'
+    import { createRoot } from 'react-dom/client'
+    import './index.css'
+    import App from './AppComponents.jsx'
+
+    createRoot(document.getElementById('root')).render(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    )
+
+Start the development server:
+    npm run dev
+
+4. Recommended Browser & VS Code Extensions
+------------------------------------------------------------------------------
+- Chrome Extension:
+    * React Developer Tools (inspect component tree & live props in DevTools)
+- VS Code Extensions:
+    * ES7+ React/Redux/React-Native snippets
+        - Use `rfce` or `rafce` to scaffold a Functional Component.
+        - Note: In React 19, delete the unused `import React from 'react'` line
+          if the snippet adds it.
+        - Avoid Class Component snippets (like `ccc`) — modern React uses
+          functional components exclusively.
+    * Tailwind CSS IntelliSense (autocomplete & hover previews for utility classes)
+    * React Component Tree / Omlet for VS Code (visualizes parent-child hierarchy)
+
+5. Complete Summary of All 14 Component Examples (src/components/firstT/)
+------------------------------------------------------------------------------
+- #1  HelloWorldJS1.jsx: First functional component & JSX basics.
+- #2  GreetingJS2.jsx: Passing props & parameter destructuring.
+- #3  GreetingJS3.jsx: ES6 default prop values & JS expressions inside `{}`.
+- #4  UserList4.jsx + ProfileCard4.jsx: Parent-Child composition & mapping arrays with stable keys.
+- #5  ButtonContainer5.jsx + ActionButton5.jsx: Callback props (`onClick`) & `{...rest}` forwarding.
+- #6  ItemListContainer6.jsx + ItemList6.jsx: Container/Presentational pattern & valid `<ul>`/`<li>` HTML.
+- #7  FormExample7.jsx + LabeledInput7.jsx: Accessible forms (`htmlFor` + `id`) & reusable inputs.
+- #8  VisibilityController8.jsx + TogglebleText8.jsx: Conditional rendering with `Boolean(isVisible) && <JSX />`.
+- #9  AlertContainer9.jsx + Alert9.jsx: Dynamic styling via complete Tailwind class lookup dictionaries.
+- #10 DynamicMenu10.jsx: Data-driven navigation menu & `aria-current="page"`.
+- #11 CardWrapper11.jsx: Component composition using `children` & named `footer` slot props.
+- #12 UserStatus12.jsx: Ternary operator (`? :`) & boolean status badges.
+- #13 ArticleLayout13.jsx: React Fragments (`<>...</>`) to avoid unnecessary wrapper `<div>` nodes.
+- #14 ProductCard14.jsx: Passing objects as props, early guard clauses & default fallbacks.

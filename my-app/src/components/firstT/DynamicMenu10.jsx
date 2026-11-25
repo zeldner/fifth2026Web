@@ -1,28 +1,39 @@
-// Ilya Zeldner
-// 10 example of react
-// This component demonstrates how to create a dynamic menu using props.
-// It takes an array of items as props and renders a navigation menu
-// with links.
+// Ilya Zeldner - Web Technologies Practice 5 (Example 10: Data-Driven Navigation Menu)
+//
+// HOW IT WORKS:
+//   - Receives an `items` array (`[{ id, label, path }]`) and optional `activePath` prop.
+//   - Marks the active navigation link with `aria-current="page"` and highlighted styling.
+//
+// PROS:
+//   - Decouples navigation structure from JSX markup — adding a route is just adding an array item.
+//
+// CONS & COMMON PITFALLS:
+//   - Always use `key={item.id}` from your route object rather than array index.
 
-import React from 'react';
-
-function DynamicMenu({ items }) {
+export default function DynamicMenu({ items = [], activePath = '/' }) {
   return (
-    <nav className="bg-gray-800 p-4 rounded-lg shadow-lg">
-      <ul className="flex space-x-6 justify-center">
-        {items.map((item) => (
-          <li key={item.id}>
-            <a 
+    <nav aria-label="Example Navigation" className="bg-slate-900 p-3 rounded-xl shadow-sm">
+      <ul className="flex flex-wrap gap-2 justify-center">
+        {items.map((item) => {
+          const isActive = item.path === activePath;
+          return (
+            <li key={item.id}>
+              <a
                 href={item.path}
-                className="text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
+                aria-current={isActive ? 'page' : undefined}
+                onClick={(e) => e.preventDefault()}
+                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors inline-block ${
+                  isActive
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                }`}
+              >
                 {item.label}
-            </a>  
-          </li>
-        ))}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
 }
-
-export default DynamicMenu;

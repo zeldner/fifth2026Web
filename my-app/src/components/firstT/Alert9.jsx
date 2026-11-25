@@ -1,25 +1,31 @@
-// Ilya Zeldner
-// 9 example of react
-// This component demonstrates how to create a simple alert
-// component that displays messages with different styles based on the type of alert.
-// mhvnhvhv
+// Ilya Zeldner - Web Technologies Practice 5 (Example 9A: Dynamic Styling Lookup Map)
+//
+// HOW IT WORKS:
+//   - Maps `type` (`'success'`, `'warning'`, `'error'`, `'info'`) to complete Tailwind CSS class strings.
+//   - Uses `role="alert"` so screen readers announce important notifications immediately.
+//
+// PROS:
+//   - Clean, extensible lookup dictionary instead of messy nested `if / else` chains.
+//
+// CONS & COMMON PITFALLS:
+//   - TAILWIND V4 RULE: Never construct dynamic class names with string interpolation like
+//     `bg-${color}-100`! Tailwind's build scanner looks for complete class strings in source files
+//     and will purge dynamically concatenated classes. Always map full class names as shown below.
 
-export default function Alert(props) {
-    
-    // Mapping 'types' to Tailwind utility classes
-    const alertStyles = {
-        success: "bg-green-100 border-green-400 text-green-700",
-        warning: "bg-orange-100 border-orange-400 text-orange-700",
-        error:   "bg-red-100 border-red-400 text-red-700"
-    };
+export default function Alert({ type = 'info', message }) {
+  const alertStyles = {
+    success: 'bg-emerald-50 border-emerald-500 text-emerald-900',
+    warning: 'bg-amber-50 border-amber-500 text-amber-900',
+    error: 'bg-rose-50 border-rose-500 text-rose-900',
+    info: 'bg-blue-50 border-blue-500 text-blue-900',
+  };
 
-    // Fallback to gray if type is unknown
-    const activeClass = alertStyles[props.type] || "bg-gray-100 border-gray-400 text-gray-700";
+  const activeClass = alertStyles[type] || alertStyles.info;
 
-    return (
-      <div className={`border-l-4 p-4 mb-4 rounded ${activeClass} flex items-center shadow-sm`}>
-        <span className="font-bold mr-2 uppercase text-xs tracking-wider">{props.type}:</span>
-        <span>{props.message}</span>
-      </div>
-    );
+  return (
+    <div role="alert" className={`border-l-4 p-3.5 rounded-r-lg ${activeClass} flex items-center text-sm shadow-xs`}>
+      <span className="font-bold mr-2 uppercase text-xs tracking-wider">{type}:</span>
+      <span>{message}</span>
+    </div>
+  );
 }

@@ -1,20 +1,26 @@
-// Ilya Zeldner
-// 11 example of react
-// This component demonstrates the "children" prop.
-// It acts as a wrapper (container) for any content you put inside it.
+// Ilya Zeldner - Web Technologies Practice 5 (Example 11: Composition with `children` & Slot Props)
+//
+// HOW IT WORKS:
+//   - Any JSX placed between `<CardWrapper> ... </CardWrapper>` is automatically passed as `children`.
+//   - Also supports an optional `footer` prop ("Slot Pattern") for action buttons or metadata.
+//
+// PROS:
+//   - Avoids "Prop Explosion": instead of passing 10 string props, parents compose arbitrary JSX inside.
+//   - Foundation for building Modals, Sidebars, Page Shells, and Dashboard Cards.
 
-import React from 'react';
-
-function CardWrapper({ title, children }) {
+export default function CardWrapper({ title, subtitle, footer, children }) {
   return (
-    <div className="border border-gray-300 rounded-lg p-5 m-3 shadow-md bg-white">
-      <h3 className="border-b-2 border-gray-700 pb-2 mb-4 text-xl font-semibold text-gray-800">
-        {title}
-      </h3>
-      <div className="text-gray-600">
-        {children}
-      </div>
-    </div>
+    <section className="border border-slate-200 rounded-xl p-5 shadow-sm bg-white">
+      <header className="border-b border-slate-200 pb-3 mb-4">
+        <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+        {subtitle && <p className="text-xs text-slate-500 mt-0.5">{subtitle}</p>}
+      </header>
+      <div className="text-slate-700 text-sm">{children}</div>
+      {footer && (
+        <footer className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+          {footer}
+        </footer>
+      )}
+    </section>
   );
 }
-export default CardWrapper;
