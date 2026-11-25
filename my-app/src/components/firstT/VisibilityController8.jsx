@@ -1,18 +1,18 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 8B: Controlling Child Visibility via Props)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 8A: Controlling Child Visibility via Props)
 //
 // HOW IT WORKS:
-//   - Renders two `<ToggleableText />` instances: one with `isVisible={true}` and one with `isVisible={false}`.
-//   - Demonstrates how boolean props control whether a child renders into the DOM at all.
+//   - Passes `isVisible={true}` to the first child and `isVisible={false}` to the second child.
+//   - Note: Interactive toggling on button click requires `useState` (coming in Practice 6).
 
-import ToggleableText from './TogglebleText8';
+import ToggleableText from './ToggleableText8';
 
 export default function VisibilityController() {
   return (
     <div className="space-y-2">
-      <ToggleableText text="Visible message: isVisible={true} renders this banner." isVisible={true} />
-      <ToggleableText text="Hidden message: isVisible={false} renders nothing." isVisible={false} />
+      <ToggleableText text="Visible message: isVisible={true} mounts this banner." isVisible={true} />
+      <ToggleableText text="Hidden message: isVisible={false} renders nothing in DOM." isVisible={false} />
       <p className="text-xs text-slate-500">
-        (Notice the second <code>ToggleableText</code> component is hidden because <code>isVisible</code> is false.)
+        (The second <code>ToggleableText</code> renders nothing because <code>isVisible</code> is false.)
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 9B: Composing Alert Variants)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 9A: Composing Alert Variants)
 //
 // HOW IT WORKS:
-//   - Renders multiple `<Alert />` variants (`success`, `warning`, `error`, `info`) from one component.
+//   - Renders multiple `<Alert />` variants (`success`, `warning`, `error`, and default `info`).
 
 import Alert from './Alert9';
 

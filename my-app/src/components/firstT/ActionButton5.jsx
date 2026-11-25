@@ -1,17 +1,14 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 5A: Callback Props & Prop Spreading)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 5B: Reusable Button with Callback & ...rest)
 //
 // HOW IT WORKS:
 //   - Receives visual props (`text`, `variant`) and a function prop (`onClick`).
-//   - Spreads `{...rest}` onto the native `<button>` so standard attributes (`disabled`, `type`,
-//     `aria-label`) work automatically without manually listing every HTML attribute.
+//   - Forwards `{...rest}` (`disabled`, `aria-label`, etc.) directly to the native `<button>`.
 //
 // PROS:
-//   - Reusable design-system button with consistent Tailwind variants (`primary`, `success`, `danger`).
-//   - Parent controls *what happens* on click; child controls *how the button looks*.
+//   - Parent decides *what happens* on click; child decides *how the button looks*.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Pass `onClick={handleClick}` (function reference), NOT `onClick={handleClick()}`
-//     (which calls the function immediately during render!).
+//   - PITFALL: Pass a function reference `onClick={fn}`, NOT `onClick={fn()}` (which executes during render).
 
 export default function ActionButton({
   text,
@@ -32,7 +29,7 @@ export default function ActionButton({
     <button
       type={type}
       onClick={onClick}
-      className={`px-4 py-2 rounded-lg font-semibold text-sm shadow-sm transition-colors cursor-pointer disabled:opacity-50 ${activeStyle}`}
+      className={`px-4 py-2 rounded-lg font-semibold text-sm shadow-xs transition-colors cursor-pointer disabled:opacity-50 ${activeStyle}`}
       {...rest}
     >
       {text}

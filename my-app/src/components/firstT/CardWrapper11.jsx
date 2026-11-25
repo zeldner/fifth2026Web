@@ -1,16 +1,15 @@
 // Ilya Zeldner - Web Technologies Practice 5 (Example 11: Composition with `children` & Slot Props)
 //
 // HOW IT WORKS:
-//   - Any JSX placed between `<CardWrapper> ... </CardWrapper>` is automatically passed as `children`.
-//   - Also supports an optional `footer` prop ("Slot Pattern") for action buttons or metadata.
+//   - Any JSX placed between `<CardWrapper>...</CardWrapper>` arrives automatically in `children`.
+//   - Also supports a named `footer` slot prop for bottom metadata or actions.
 //
 // PROS:
-//   - Avoids "Prop Explosion": instead of passing 10 string props, parents compose arbitrary JSX inside.
-//   - Foundation for building Modals, Sidebars, Page Shells, and Dashboard Cards.
+//   - Prevents "Prop Explosion" — parents can pass paragraphs, badges, forms, or nested cards inside.
 
 export default function CardWrapper({ title, subtitle, footer, children }) {
   return (
-    <section className="border border-slate-200 rounded-xl p-5 shadow-sm bg-white">
+    <section className="border border-slate-200 rounded-xl p-5 shadow-xs bg-white">
       <header className="border-b border-slate-200 pb-3 mb-4">
         <h3 className="text-lg font-bold text-slate-900">{title}</h3>
         {subtitle && <p className="text-xs text-slate-500 mt-0.5">{subtitle}</p>}

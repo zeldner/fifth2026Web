@@ -1,4 +1,3 @@
-# Ilya Zeldner
 # ==============================================================================
 # Practice 5 Setup & Curriculum Guide: React 19 + Vite (SWC) + Tailwind CSS v4
 # ==============================================================================
@@ -60,8 +59,7 @@ Configure src/index.css:
 
 3. Wire AppComponents.jsx in src/main.jsx
 ------------------------------------------------------------------------------
-To display the Practice 5 Dashboard instead of Vite's starter page, update
-src/main.jsx to import AppComponents:
+Update src/main.jsx to render AppComponents:
 
     import { StrictMode } from 'react'
     import { createRoot } from 'react-dom/client'
@@ -84,15 +82,22 @@ Start the development server:
 - VS Code Extensions:
     * ES7+ React/Redux/React-Native snippets
         - Use `rfce` or `rafce` to scaffold a Functional Component.
-        - Note: In React 19, delete the unused `import React from 'react'` line
-          if the snippet adds it.
-        - Avoid Class Component snippets (like `ccc`) — modern React uses
-          functional components exclusively.
+        - Note: Both `function Comp() {} export default Comp` and
+          `export default function Comp() {}` are standard in React 19.
+        - Delete any unused `import React from 'react'` added by older snippets.
     * Tailwind CSS IntelliSense (autocomplete & hover previews for utility classes)
     * React Component Tree / Omlet for VS Code (visualizes parent-child hierarchy)
 
-5. Complete Summary of All 14 Component Examples (src/components/firstT/)
+5. Naming Convention Note
 ------------------------------------------------------------------------------
+In production repositories, component files are named after their domain role
+without trailing lesson numbers (e.g., `ProductCard.jsx`, `Alert.jsx`).
+Numbers (#1-#15) are used in `src/components/firstT/` purely to preserve the
+chronological progression of Practice 5.
+
+6. Complete Curriculum Summary (src/components/firstT/)
+------------------------------------------------------------------------------
+[Core Lesson: #1 - #8]
 - #1  HelloWorldJS1.jsx: First functional component & JSX basics.
 - #2  GreetingJS2.jsx: Passing props & parameter destructuring.
 - #3  GreetingJS3.jsx: ES6 default prop values & JS expressions inside `{}`.
@@ -100,10 +105,13 @@ Start the development server:
 - #5  ButtonContainer5.jsx + ActionButton5.jsx: Callback props (`onClick`) & `{...rest}` forwarding.
 - #6  ItemListContainer6.jsx + ItemList6.jsx: Container/Presentational pattern & valid `<ul>`/`<li>` HTML.
 - #7  FormExample7.jsx + LabeledInput7.jsx: Accessible forms (`htmlFor` + `id`) & reusable inputs.
-- #8  VisibilityController8.jsx + TogglebleText8.jsx: Conditional rendering with `Boolean(isVisible) && <JSX />`.
+- #8  VisibilityController8.jsx + ToggleableText8.jsx: Conditional rendering with `Boolean(isVisible) && <JSX />`.
+
+[Advanced Composition & Purity: #9 - #15]
 - #9  AlertContainer9.jsx + Alert9.jsx: Dynamic styling via complete Tailwind class lookup dictionaries.
 - #10 DynamicMenu10.jsx: Data-driven navigation menu & `aria-current="page"`.
 - #11 CardWrapper11.jsx: Component composition using `children` & named `footer` slot props.
 - #12 UserStatus12.jsx: Ternary operator (`? :`) & boolean status badges.
 - #13 ArticleLayout13.jsx: React Fragments (`<>...</>`) to avoid unnecessary wrapper `<div>` nodes.
 - #14 ProductCard14.jsx: Passing objects as props, early guard clauses & default fallbacks.
+- #15 SortedCourseList15.jsx: Component purity & array prop immutability (`[...courses].sort()`).

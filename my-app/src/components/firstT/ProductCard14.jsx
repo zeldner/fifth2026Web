@@ -1,15 +1,11 @@
 // Ilya Zeldner - Web Technologies Practice 5 (Example 14: Object Props, Guard Clauses & Fallbacks)
 //
 // HOW IT WORKS:
-//   - Accepts a structured `product` object prop (`{ name, price, category, inStock }`).
-//   - Uses an early guard clause (`if (!product) return ...`) to prevent `TypeError: Cannot read properties of undefined`.
-//   - Destructures fields with default values (`category = 'General'`, `inStock = true`).
-//
-// PROS:
-//   - Defensive component design: handles missing objects or optional properties gracefully.
+//   - Guards against missing `product` (`if (!product) return ...`) before destructuring fields.
+//   - Applies default values (`category = 'General'`, `inStock = true`) for optional object keys.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Never mutate `product.price = 0` inside the component — treat all object props as read-only!
+//   - PITFALL: Never mutate `product.price = 0` inside the component — treat object props as read-only!
 
 export default function ProductCard({ product }) {
   if (!product) {

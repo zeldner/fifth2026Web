@@ -1,18 +1,12 @@
 // Ilya Zeldner - Web Technologies Practice 5 (Example 10: Data-Driven Navigation Menu)
 //
 // HOW IT WORKS:
-//   - Receives an `items` array (`[{ id, label, path }]`) and optional `activePath` prop.
-//   - Marks the active navigation link with `aria-current="page"` and highlighted styling.
-//
-// PROS:
-//   - Decouples navigation structure from JSX markup — adding a route is just adding an array item.
-//
-// CONS & COMMON PITFALLS:
-//   - Always use `key={item.id}` from your route object rather than array index.
+//   - Maps an `items` array (`[{ id, label, path }]`) into links and highlights `activePath`.
+//   - Marks the active link with `aria-current="page"` for screen-reader accessibility.
 
 export default function DynamicMenu({ items = [], activePath = '/' }) {
   return (
-    <nav aria-label="Example Navigation" className="bg-slate-900 p-3 rounded-xl shadow-sm">
+    <nav aria-label="Example Navigation" className="bg-slate-900 p-3 rounded-xl shadow-xs">
       <ul className="flex flex-wrap gap-2 justify-center">
         {items.map((item) => {
           const isActive = item.path === activePath;

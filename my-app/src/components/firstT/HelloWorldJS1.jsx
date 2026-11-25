@@ -1,16 +1,16 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 1: Your First React Component)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 1: First Functional Component)
 //
 // HOW IT WORKS:
-//   - A React component is a plain JavaScript function whose name starts with a CAPITAL letter.
-//   - It returns JSX (HTML-like syntax that Vite/SWC compiles into React element calls).
-//   - Notice we no longer need `import React from 'react'` in modern React (17/18/19).
+//   - A React component is a JavaScript function whose name starts with a CAPITAL letter.
+//   - It returns JSX, which Vite/SWC compiles into React element calls.
+//   - Modern React (17/18/19) does NOT require `import React from 'react'` in every file.
 //
 // PROS:
 //   - Simple, declarative UI building block that can be reused anywhere via `<HelloWorldJS />`.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL #1: Naming a component lowercase (`helloWorldJS`) makes React treat it as an HTML tag.
-//   - PITFALL #2: Putting a semicolon after `<h1>...</h1>;` inside JSX renders a literal `;` on screen!
+//   - PITFALL #1: Lowercase names (`helloWorldJS`) are treated by React as built-in HTML tags.
+//   - PITFALL #2: Putting a semicolon after `<h1>...</h1>;` inside JSX prints a literal `;` on screen.
 
 export default function HelloWorldJS() {
   return (

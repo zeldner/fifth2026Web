@@ -1,15 +1,10 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 7A: Accessible Reusable Form Field)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 7B: Accessible Reusable Form Field)
 //
 // HOW IT WORKS:
-//   - Generates a matching `inputId` and connects `<label htmlFor={inputId}>` with `<input id={inputId} />`.
-//   - Forwards `{...rest}` (`required`, `autoComplete`, `name`, `placeholder`) directly to `<input>`.
-//
-// PROS:
-//   - Clicking the `<label>` automatically focuses the `<input>` (essential for accessibility & mobile UX).
-//   - Notice JSX uses `htmlFor` instead of HTML's `for` (because `for` is a reserved JS keyword).
+//   - Connects `<label htmlFor={inputId}>` to `<input id={inputId} />` and spreads `{...rest}`.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Without `htmlFor` + `id`, screen readers cannot associate the label with its input box.
+//   - PITFALL: In JSX, use `htmlFor` instead of HTML's `for` (because `for` is a reserved JS keyword).
 
 export default function LabeledInput({ label, type = 'text', id, ...rest }) {
   const inputId = id || `field-${label.toLowerCase().replace(/\s+/g, '-')}`;

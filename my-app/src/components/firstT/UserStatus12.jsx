@@ -1,11 +1,8 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 12: Ternary & Boolean Conditional UI)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 12: Ternary Operator & Status Badges)
 //
 // HOW IT WORKS:
-//   - Uses the ternary operator (`isOnline ? 'ONLINE' : 'OFFLINE'`) for mutually exclusive states,
-//     and logical `&&` (`isOnline && <span>...</span>`) for optional extra UI.
-//
-// PROS:
-//   - Expressive, declarative UI state driven directly by boolean props.
+//   - Uses ternary expressions (`isOnline ? 'ONLINE' : 'OFFLINE'`) for mutually exclusive UI states,
+//     paired with `&&` for optional extra status text.
 
 export default function UserStatus({ username = 'Anonymous', isOnline = false }) {
   return (

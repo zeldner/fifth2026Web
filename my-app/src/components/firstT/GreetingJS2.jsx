@@ -2,15 +2,15 @@
 //
 // HOW IT WORKS:
 //   - Parent components pass data down via attributes: `<GreetingJS name="John Doe" role="Developer" />`.
-//   - React bundles those attributes into a single `props` object and passes it to this function.
-//   - We destructure `{ name, role }` directly in the parameter list for clean, readable code.
+//   - React bundles attributes into a `props` object and passes it to the function.
+//   - Destructuring `{ name, role }` in the signature avoids repetitive `props.` prefixes.
 //
 // PROS:
-//   - Makes a single component reusable with different inputs.
-//   - Data flows strictly one way: Parent -> Child (Unidirectional Data Flow).
+//   - Makes one component reusable with different inputs.
+//   - Enforces Unidirectional Data Flow (Parent -> Child).
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Props are READ-ONLY (immutable). Never write `props.name = 'Other'` inside a child!
+//   - PITFALL: Props are strictly READ-ONLY (immutable). Never reassign `name = '...'` inside the child.
 
 export default function GreetingJS({ name, role }) {
   return (

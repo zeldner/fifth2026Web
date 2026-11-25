@@ -1,19 +1,17 @@
 // Ilya Zeldner - Web Technologies Practice 5 (Example 3: Default Prop Values & JS Expressions)
 //
 // HOW IT WORKS:
-//   - Assigns ES6 default values directly in the function signature (`name = 'Guest'`).
-//   - Any JavaScript expression (math, ternary, template literals, methods) can run inside `{ ... }`.
+//   - Uses ES6 default parameters (`name = 'Guest'`, `coursesCount = 0`) right in the signature.
+//   - Embeds JavaScript expressions (methods, math, ternary operators) inside `{ ... }`.
 //
 // PROS:
-//   - Replaces legacy `Component.defaultProps` (which was removed for function components in React 19)
-//     and legacy Class Components (`class Greeting extends React.Component`).
-//   - Prevents `"Hello, undefined!"` when an optional prop is omitted.
+//   - Replaces legacy Class Components (`extends React.Component`) and deprecated `defaultProps`.
+//   - Prevents `"Hello, undefined!"` when an optional prop is omitted by the parent.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Only JavaScript *expressions* (values) work inside `{}` — statements like `if` or `for`
-//     are not valid inside JSX curly braces.
+//   - PITFALL: Only JS *expressions* (values) work inside `{}` — statements (`if`, `for`) are invalid.
 
-export default function GreetingJS2({ name = 'Guest', coursesCount = 0 }) {
+export default function GreetingJS3({ name = 'Guest', coursesCount = 0 }) {
   return (
     <div className="p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-950">
       <p className="text-lg font-semibold">

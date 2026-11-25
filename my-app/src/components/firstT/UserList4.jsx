@@ -1,17 +1,16 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 4B: Rendering Component Lists with Keys)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 4A: Component Composition & List Keys)
 //
 // HOW IT WORKS:
-//   - Upgraded from a legacy Class Component to a clean modern Functional Component.
-//   - Uses `users.map()` to transform an array of user objects into `<ProfileCard />` elements.
-//   - Passes a unique, stable `key={user.id}` to each item so React tracks DOM updates accurately.
+//   - React favors Composition over Inheritance: `UserList` composes `<ProfileCard />` children.
+//   - Maps over `users` and assigns a stable unique `key={user.id}` to each rendered card.
 //
 // PROS:
-//   - Clean separation between list iteration (`UserList`) and item presentation (`ProfileCard`).
-//   - Graceful empty-state fallback when `users` is empty.
+//   - Clean separation between list iteration and single-item presentation.
+//   - Includes a graceful empty-state fallback when `users` is empty.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Avoid `key={index}` when items can be added, deleted, or reordered — React may reuse
-//     the wrong DOM node. Always prefer a unique ID (`user.id`).
+//   - PITFALL: Avoid `key={index}` when lists can be reordered, filtered, or deleted — always
+//     use a unique ID (`user.id`) so React preserves DOM state accurately.
 
 import ProfileCard from './ProfileCard4';
 

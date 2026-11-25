@@ -1,19 +1,15 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 6A: Clean List Rendering & Valid HTML)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 6B: Semantic List Component)
 //
 // HOW IT WORKS:
-//   - Renders a heading `<h4>` above a semantic `<ul>` list of `<li>` elements.
-//   - Uses destructuring with default props `{ title = 'Item List', items = [] }`.
-//
-// PROS:
-//   - Produces 100% valid, accessible HTML (`<h4>` is outside `<ul>`, so `<ul>` contains only `<li>`).
+//   - Renders a heading `<h4>` outside `<ul>`, and maps `items` into `<li>` children inside `<ul>`.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL FIXED: Never place an `<h4>` or `<div>` directly inside a `<ul>` — HTML5 allows only
-//     `<li>` elements as direct children of `<ul>` or `<ol>`.
+//   - PITFALL FIXED: Never place an `<h4>` directly inside a `<ul>` — HTML5 allows only `<li>`
+//     elements as direct children of `<ul>` or `<ol>`.
 
 export default function ItemList({ title = 'Item List', items = [] }) {
   return (
-    <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+    <div className="bg-white p-5 rounded-xl shadow-xs border border-slate-200">
       <h4 className="text-base font-bold mb-2 text-slate-800">{title}</h4>
       {items.length === 0 ? (
         <p className="text-sm text-slate-500">No items in list.</p>

@@ -1,10 +1,7 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 6B: Container Passing Data Array to List)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 6A: Container Passing Data Array)
 //
 // HOW IT WORKS:
-//   - Prepares a data array (`fruits`) and passes it down to `<ItemList />` via props.
-//
-// PROS:
-//   - Keeps data sourcing separate from list rendering markup.
+//   - Supplies an array of strings (`fruits`) and passes it down to `<ItemList />` via props.
 
 import ItemList from './ItemList6';
 

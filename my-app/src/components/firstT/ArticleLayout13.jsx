@@ -1,16 +1,11 @@
 // Ilya Zeldner - Web Technologies Practice 5 (Example 13: React Fragments <>...</>)
 //
 // HOW IT WORKS:
-//   - A React component must return a SINGLE root node.
-//   - Fragments (`<>...</>`) group sibling elements (`<header>`, `<main>`, `<footer>`) without
-//     polluting the DOM with an unnecessary wrapper `<div>`.
-//
-// PROS:
-//   - Keeps HTML semantics clean and avoids breaking CSS Flexbox/Grid parent-child layouts.
+//   - Groups sibling elements (`<header>`, `<div>`, `<footer>`) without adding an extra `<div>` to the DOM.
 //
 // CONS & COMMON PITFALLS:
-//   - PITFALL: Shorthand `<>...</>` cannot accept a `key` attribute! When returning multiple
-//     elements inside `.map()`, import `{ Fragment }` from `'react'` and use `<Fragment key={id}>`.
+//   - PITFALL: Shorthand `<>...</>` cannot take a `key` prop — inside `.map()`, import `{ Fragment }`
+//     from `'react'` and write `<Fragment key={id}>...</Fragment>`.
 
 export default function ArticleLayout({ title, author = 'Web Engineering Course', content }) {
   return (

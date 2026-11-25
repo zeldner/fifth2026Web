@@ -1,16 +1,11 @@
-// Ilya Zeldner - Web Technologies Practice 5 (Example 9A: Dynamic Styling Lookup Map)
+// Ilya Zeldner - Web Technologies Practice 5 (Example 9B: Dynamic Styling Lookup Dictionary)
 //
 // HOW IT WORKS:
-//   - Maps `type` (`'success'`, `'warning'`, `'error'`, `'info'`) to complete Tailwind CSS class strings.
-//   - Uses `role="alert"` so screen readers announce important notifications immediately.
-//
-// PROS:
-//   - Clean, extensible lookup dictionary instead of messy nested `if / else` chains.
+//   - Maps `type` (`success`, `warning`, `error`, `info`) to complete Tailwind class strings.
 //
 // CONS & COMMON PITFALLS:
-//   - TAILWIND V4 RULE: Never construct dynamic class names with string interpolation like
-//     `bg-${color}-100`! Tailwind's build scanner looks for complete class strings in source files
-//     and will purge dynamically concatenated classes. Always map full class names as shown below.
+//   - TAILWIND V4 RULE: Never interpolate class names like `bg-${color}-50` — Tailwind's static
+//     build scanner requires complete class strings in source code so styles are not purged.
 
 export default function Alert({ type = 'info', message }) {
   const alertStyles = {
